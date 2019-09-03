@@ -1,0 +1,19 @@
+ <mat-card *ngIf="userInfo">
+    <mat-card-content>
+        <div class="username">
+            <label>
+                <b> {{user.name}}:</b>{{userInfo.firstname}} {{userInfo.lastname}}
+            </label>
+        </div>
+        <div class="designation">
+            <label>
+                <b> {{user.designation}}:</b>{{userInfo.designation}}
+            </label>
+        </div>
+        <div class="team">
+            <label>
+                <b> {{user.team}}:</b>{{userInfo.team}}
+            </label>
+        </div>
+    </mat-card-content>
+</mat-card>
