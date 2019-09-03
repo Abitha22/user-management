@@ -1,0 +1,44 @@
+.card {
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width:25%;
+  height: 58%;
+  flex-direction: row;
+  background-color: rgba(54, 152, 190, 0.795) ;
+  color: white;
+  padding: 2em;
+  padding-left: 50px;
+  float: left;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 80px;
+  margin-left:60px;
+}
+.roles {
+color: black;
+}
+*{
+  box-sizing:  border-box;
+}
+ .profile-image{
+  border-radius: 50%;
+  border: 3px solid white;
+  display: inline;
+  margin-left: 100px;
+  margin-right: 50px;
+}
+.profile-name{
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+.profile-position{
+  color: black;
+}
+.profile-name::after{
+  content: "";
+  display: block;
+  height: 1px;
+  width: 8em;
+  background: black;
+  margin: 0.5em auto;
+}
