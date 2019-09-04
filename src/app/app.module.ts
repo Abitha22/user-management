@@ -9,12 +9,16 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { MatCardModule } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     UserDataComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    SearchInputComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

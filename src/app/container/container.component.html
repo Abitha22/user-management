@@ -6,7 +6,7 @@
 <div class="content" role="main">
       <div class='row'>
             <div class='column' *ngFor='let user of users; let i = index; '>
-                  <mat-card (click)="details(i)">
+                  <mat-card>
                         <app-user-data [userInfo]=users[i]></app-user-data>
                   </mat-card>
             </div>
@@ -15,5 +15,4 @@
 
 <!-- Footer -->
 <footer>
-
 </footer>
