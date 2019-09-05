@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerComponent } from './container/container.component';
 import { UserDataComponent } from './user-data/user-data.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule , MatSelectModule , MatOptionModule } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { SearchFilterComponent } from './search-filter/search-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +19,17 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     UserDataComponent,
     UserDetailsComponent,
     SearchInputComponent,
-    DropdownComponent
+    DropdownComponent,
+    SearchFilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
