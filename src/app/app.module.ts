@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerComponent } from './container/container.component';
 import { UserDataComponent } from './user-data/user-data.component';
-import { MatCardModule , MatSelectModule , MatOptionModule } from '@angular/material';
+import { MatCardModule , MatSelectModule , MatOptionModule, MatFormFieldModule } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { SearchInputComponent } from './search-input/search-input.component';
@@ -29,7 +29,8 @@ import { SearchFilterComponent } from './search-filter/search-filter.component';
     MatCardModule,
     HttpClientModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

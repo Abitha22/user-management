@@ -6,14 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-filter.component.css']
 })
 export class SearchFilterComponent implements OnInit {
-// list = ['All' , 'Name' , 'Designation' , 'Team'];
 list = [
   { value : 'All'} ,
   { value : 'Name'},
   { value : 'Designation'},
   { value : 'Team'}
 ];
-currentValue = this.list[0];
+selectedType = this.list[0].value;
   constructor() { }
 
   ngOnInit() {

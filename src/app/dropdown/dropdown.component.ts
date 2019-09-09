@@ -10,16 +10,12 @@ export class DropdownComponent implements OnInit {
   dropdownList;
 
   @Input()
-  currentValue;
+  selectedType;
 
   @Output()
-  outValue = new EventEmitter();
+  outSelectedtype = new EventEmitter();
 
-  select(value) {
-    this.outValue.emit(value);
-  }
   constructor() {
-    console.log(this.dropdownList);
    }
 
   ngOnInit() {

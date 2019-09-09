@@ -5,6 +5,7 @@ import { ContainerComponent } from './container/container.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { MaterialModule } from './modules/material.module';
 import { HttpClientTestingModule } from '../../node_modules/@angular/common/http/testing';
+import { SearchFilterComponent } from './search-filter/search-filter.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,7 +18,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent ,
         ContainerComponent ,
-        UserDataComponent
+        UserDataComponent , SearchFilterComponent
       ],
     }).compileComponents();
   }));
