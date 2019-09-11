@@ -6,22 +6,28 @@ import { Component, OnInit , Input , Output , EventEmitter} from '@angular/core'
   styleUrls: ['./dropdown.component.css']
 })
 export class DropdownComponent implements OnInit {
+
   @Input()
   dropdownList;
 
   @Input()
-  currentValue;
+  selectedType;
 
   @Output()
-  outValue = new EventEmitter();
+  outSelectedType = new EventEmitter();
 
   select(value) {
-    this.outValue.emit(value);
+    this.outSelectedType.emit(value);
+    console.log('emitted type is' , value);
   }
   constructor() {
-    console.log(this.dropdownList);
    }
 
+   onChange(event) {
+     this.selectedType = event.target.value;
+     this.outSelectedType.emit(this.selectedType);
+     console.log('selected type is' , this.selectedType);
+  }
   ngOnInit() {
   }
 

@@ -1,3 +1,5 @@
-<mat-select>
-    <mat-option *ngFor="let list of dropdownList" [value]="list.value">{{list.value}}</mat-option>
-</mat-select>
+    <select [(ngModel)]="selectedType" (click)="onChange($event)">
+        <option   *ngFor="let list of dropdownList" [value]="list.value">
+            {{list.value}}
+        </option>
+    </select>
