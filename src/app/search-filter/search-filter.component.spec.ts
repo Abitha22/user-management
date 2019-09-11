@@ -10,10 +10,10 @@ describe('SearchFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [FormsModule],
-      declarations: [ SearchFilterComponent , DropdownComponent]
+      imports: [FormsModule],
+      declarations: [SearchFilterComponent, DropdownComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,5 +24,25 @@ describe('SearchFilterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should')
+  describe('Dropdown Selector', () => {
+    it('should have dropdown selector as an element', () => {
+
+    });
+    it('dropdown selector should take input value of type array', () => {
+
+    });
+    it('dropdown selector should emit the value', () => {
+
+    });
+  });
+  describe('SearchInput Selector', () => {
+    it('should have searchinput selector as an element', () => {
+
+    });
+    it('dropdown selector should emit the value', () => {
+
+    });
   });
 });

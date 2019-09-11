@@ -22,4 +22,25 @@ describe('SearchInputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have input field', () => {
+
+  });
+  it('should accept input numbers', () => {
+
+  });
+  it('should accept input alphabets', () => {
+
+  });
+  it('should not accept the special symbols', () => {
+
+  });
+  it('should emit the input value', () => {
+
+  });
+  it('should not emit the empty value', () => {
+
+  });
+  it ('emiting value should match the input value', () => {
+
+  });
 });

@@ -5,7 +5,7 @@ import { Component, OnInit , Input , Output , EventEmitter} from '@angular/core'
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent{
 
   @Input()
   dropdownList;
@@ -28,7 +28,4 @@ export class DropdownComponent implements OnInit {
      this.outSelectedType.emit(this.selectedType);
      console.log('selected type is' , this.selectedType);
   }
-  ngOnInit() {
-  }
-
 }
