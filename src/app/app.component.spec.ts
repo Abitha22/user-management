@@ -8,6 +8,7 @@ import { HttpClientTestingModule } from '../../node_modules/@angular/common/http
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { SearchInputComponent } from './search-input/search-input.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +24,8 @@ describe('AppComponent', () => {
         ContainerComponent ,
         UserDataComponent ,
         SearchFilterComponent ,
-        DropdownComponent
+        DropdownComponent ,
+        SearchInputComponent
       ],
     }).compileComponents();
   }));

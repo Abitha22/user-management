@@ -16,10 +16,6 @@ export class DropdownComponent implements OnInit {
   @Output()
   outSelectedType = new EventEmitter();
 
-  select(value) {
-    this.outSelectedType.emit(value);
-    console.log('emitted type is' , value);
-  }
   constructor() {
    }
 

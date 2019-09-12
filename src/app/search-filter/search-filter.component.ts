@@ -13,6 +13,14 @@ list = [
   { value : 'Team'}
 ];
   selectedType = this.list[0].value;
+
+  searchInput(value) {
+    console.log('ok');
+  }
+  filterType(type) {
+    console.log(type);
+  }
+
   constructor() { }
 
   ngOnInit() {

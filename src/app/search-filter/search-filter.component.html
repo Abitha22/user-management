@@ -1,1 +1,2 @@
-<app-dropdown [dropdownList]="list" [selectedType]="selectedType"></app-dropdown>
+<app-dropdown [dropdownList]="list" [selectedType]="selectedType" (outSelectedType)="filterType($event)"></app-dropdown>
+<app-search-input (outSearchInput)="searchInput($event)"></app-search-input>

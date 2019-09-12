@@ -22,4 +22,38 @@ describe('SearchInputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have input field', () => {
+    const element = fixture.debugElement.nativeElement.querySelectorAll('input');
+    expect(element).toBeTruthy();
+  });
+  it('should accept input numbers', () => {
+
+  });
+  it('should accept input alphabets', () => {
+
+  });
+  it('should not accept the special symbols', () => {
+
+  });
+  it('should emit the input value', () => {
+    const input = fixture.nativeElement.querySelector('input');
+    spyOn(component.outSearchInput, 'emit');
+    input.value = 'testing';
+    component.enterValue(input);
+    expect(component.outSearchInput.emit).toHaveBeenCalledWith('testing');
+  });
+  it('should not emit the empty value', () => {
+    const input = fixture.nativeElement.querySelector('input');
+    spyOn(component.outSearchInput, 'emit');
+    input.value = '';
+    component.enterValue(input);
+    expect(component.outSearchInput.emit).toHaveBeenCalledTimes(0);
+  });
+  it ('emiting value should match the input value', () => {
+    const input = fixture.nativeElement.querySelector('input');
+    spyOn(component.outSearchInput, 'emit');
+    input.value = 'testing';
+    component.enterValue(input);
+    expect(component.outSearchInput.emit).toHaveBeenCalledWith('testing');
+  });
 });

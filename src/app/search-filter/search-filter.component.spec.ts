@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { SearchFilterComponent } from './search-filter.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { FormsModule } from '../../../node_modules/@angular/forms';
+import { SearchInputComponent } from '../search-input/search-input.component';
 
 describe('SearchFilterComponent', () => {
   let component: SearchFilterComponent;
@@ -11,7 +12,7 @@ describe('SearchFilterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
-      declarations: [ SearchFilterComponent , DropdownComponent]
+      declarations: [ SearchFilterComponent , DropdownComponent , SearchInputComponent]
     })
     .compileComponents();
   }));
@@ -24,5 +25,25 @@ describe('SearchFilterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  describe('Dropdown Selector', () => {
+    it('should have dropdown selector as an element', () => {
+      const element = fixture.debugElement.nativeElement.querySelectorAll('app-dropdown');
+      expect(element).toBeTruthy();
+    });
+    it('dropdown selector should take input value of type array', () => {
+
+    });
+    it('dropdown selector should emit the value', () => {
+
+    });
+  });
+  describe('SearchInput Selector', () => {
+    it('should have searchinput selector as an element', () => {
+      const element = fixture.debugElement.nativeElement.querySelectorAll('app-search-input');
+      expect(element).toBeTruthy();
+    });
+    it('dropdown selector should emit the value', inject([SearchInputComponent], (searchinput: SearchInputComponent)  => {
+    }));
   });
 });
