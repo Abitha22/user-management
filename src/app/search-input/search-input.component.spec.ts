@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, ɵTestingCompiler } from '@angular/core/testing';
 
 import { SearchInputComponent } from './search-input.component';
 
@@ -23,7 +23,8 @@ describe('SearchInputComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should have input field', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    expect(input).toBeTruthy();
   });
   it('should accept input numbers', () => {
 
@@ -35,12 +36,25 @@ describe('SearchInputComponent', () => {
 
   });
   it('should emit the input value', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    spyOn(component.outSearchEvent, 'emit');
+    input.value = 'testing';
+    component.enterValue(input);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
   });
   it('should not emit the empty value', () => {
+  const input = fixture.nativeElement.querySelector('input');
+  spyOn(component.outSearchEvent, 'emit');
+  input.value = null;
+  component.enterValue(input);
+  expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
 
   });
   it ('emiting value should match the input value', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    spyOn(component.outSearchEvent, 'emit');
+    input.value = 'testing';
+    component.enterValue(input);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
   });
 });

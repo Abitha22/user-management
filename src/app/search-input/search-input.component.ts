@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-input',
@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
 export class SearchInputComponent {
 
   constructor() { }
+outSearchEvent = new EventEmitter<string>();
+enterValue(input: HTMLInputElement) {
+if (input.value !== '') {
+  this.outSearchEvent.emit(input.value);
 
+}
+
+}
 }
