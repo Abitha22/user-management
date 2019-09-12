@@ -13,6 +13,7 @@ enterValue(input: HTMLInputElement) {
   if (this.regex.test(input.value)) {
     if (input.value !== '') {
       this.outSearchEvent.emit(input.value);
+      console.log(input.value);
      }
   }
 }

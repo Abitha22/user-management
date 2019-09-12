@@ -27,7 +27,6 @@ describe('SearchInputComponent', () => {
     expect(element).toBeTruthy();
   });
   it('should accept input numbers', () => {
-
     const input = fixture.nativeElement.querySelector('input');
     input.value = '1234567';
     spyOn(component.outSearchEvent, 'emit');
