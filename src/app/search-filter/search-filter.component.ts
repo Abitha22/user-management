@@ -15,7 +15,7 @@ list = [
   selectedType = this.list[0].value;
 
   searchInput(value) {
-    console.log('ok');
+    console.log('working');
   }
   filterType(type) {
     console.log(type);

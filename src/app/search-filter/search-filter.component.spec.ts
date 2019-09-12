@@ -14,7 +14,7 @@ describe('SearchFilterComponent', () => {
       imports : [FormsModule],
       declarations: [ SearchFilterComponent , DropdownComponent , SearchInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -43,7 +43,7 @@ describe('SearchFilterComponent', () => {
       const element = fixture.debugElement.nativeElement.querySelectorAll('app-search-input');
       expect(element).toBeTruthy();
     });
-    it('dropdown selector should emit the value', inject([SearchInputComponent], (searchinput: SearchInputComponent)  => {
-    }));
+    it('dropdown selector should emit the value', ()  => {
+    });
   });
 });

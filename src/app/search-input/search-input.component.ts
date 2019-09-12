@@ -18,3 +18,4 @@ outSearchInput = new EventEmitter<string>();
   }
 
 }
+
