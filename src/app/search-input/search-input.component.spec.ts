@@ -27,13 +27,25 @@ describe('SearchInputComponent', () => {
     expect(input).toBeTruthy();
   });
   it('should accept input numbers', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    input.value = '1234567';
+    spyOn(component.outSearchEvent, 'emit');
+    component.enterValue(input);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('1234567');
   });
   it('should accept input alphabets', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    input.value = 'abcdefgh';
+    spyOn(component.outSearchEvent, 'emit');
+    component.enterValue(input);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('abcdefgh');
   });
   it('should not accept the special symbols', () => {
-
+    const input = fixture.nativeElement.querySelector('input');
+    input.value = '@%4q123';
+    spyOn(component.outSearchEvent, 'emit');
+    component.enterValue(input);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
   });
   it('should emit the input value', () => {
     const input = fixture.nativeElement.querySelector('input');
@@ -49,12 +61,5 @@ describe('SearchInputComponent', () => {
   component.enterValue(input);
   expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
 
-  });
-  it ('emiting value should match the input value', () => {
-    const input = fixture.nativeElement.querySelector('input');
-    spyOn(component.outSearchEvent, 'emit');
-    input.value = 'testing';
-    component.enterValue(input);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
   });
 });

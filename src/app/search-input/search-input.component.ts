@@ -8,12 +8,13 @@ import { Component, EventEmitter } from '@angular/core';
 export class SearchInputComponent {
 
   constructor() { }
+  regex = new RegExp('^[a-zA-Z0-9_]*$');
 outSearchEvent = new EventEmitter<string>();
 enterValue(input: HTMLInputElement) {
-if (input.value !== '') {
-  this.outSearchEvent.emit(input.value);
-
-}
-
+  if (this.regex.test(input.value)) {
+    if (input.value !== '') {
+      this.outSearchEvent.emit(input.value);
+     }
+  }
 }
 }
