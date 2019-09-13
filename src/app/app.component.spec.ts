@@ -4,11 +4,12 @@ import { AppComponent } from './app.component';
 import { ContainerComponent } from './container/container.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { MaterialModule } from './modules/material.module';
-import { HttpClientTestingModule } from '../../node_modules/@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
-import { FormsModule } from '../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,7 +26,8 @@ describe('AppComponent', () => {
         UserDataComponent ,
         SearchFilterComponent ,
         DropdownComponent ,
-        SearchInputComponent
+        SearchInputComponent ,
+        UsersListComponent
       ],
     }).compileComponents();
   }));

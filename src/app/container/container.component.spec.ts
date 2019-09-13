@@ -3,7 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContainerComponent } from './container.component';
 import { UserDataComponent } from '../user-data/user-data.component';
 import { MaterialModule } from '../modules/material.module';
-import { HttpClientTestingModule } from '../../../node_modules/@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SearchFilterComponent } from '../search-filter/search-filter.component';
+import { UsersListComponent } from '../users-list/users-list.component';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { SearchInputComponent } from '../search-input/search-input.component';
+import { FormsModule } from '../../../node_modules/@angular/forms';
 
 describe('ContainerComponent', () => {
   let component: ContainerComponent;
@@ -11,8 +16,9 @@ describe('ContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContainerComponent , UserDataComponent],
-      imports : [MaterialModule , HttpClientTestingModule]
+      declarations: [ ContainerComponent , SearchFilterComponent , UsersListComponent ,
+         DropdownComponent , SearchInputComponent , UserDataComponent],
+      imports : [MaterialModule , HttpClientTestingModule , FormsModule]
     })
     .compileComponents();
   }));
@@ -26,41 +32,5 @@ describe('ContainerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should create the same number of users', () => {
-    component.users = [{
-      userphotourl: '',
-      id: 1,
-      firstname: 'Testing',
-      lastname: 'Testing',
-      designation: 'Testing',
-      team: 'Testing'
-    }, {
-      userphotourl: '',
-      id: 2,
-      firstname: 'Testing',
-      lastname: 'Testing',
-      designation: 'Testing',
-      team: 'Testing'
-    }
-    ];
-    fixture.detectChanges();
-    const details: HTMLDivElement = fixture.nativeElement;
-    const userInfo = details.querySelectorAll('.column');
-    expect(userInfo.length).toEqual(2);
-  });
 
-  it('should be able to display the user details in a card', () => {
-    component.users = [{
-      userphotourl: '',
-      id: 1,
-      firstname: 'Testing',
-      lastname: 'Testing',
-      designation: 'Testing',
-      team: 'Testing'
-    }];
-    fixture.detectChanges();
-    const details: HTMLDivElement = fixture.nativeElement;
-    const userInfo = details.querySelector('app-user-data');
-    expect(userInfo).toBeTruthy();
-  });
 });

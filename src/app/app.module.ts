@@ -13,6 +13,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { UsersListComponent } from './users-list/users-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     UserDetailsComponent,
     SearchInputComponent,
     DropdownComponent,
-    SearchFilterComponent
+    SearchFilterComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

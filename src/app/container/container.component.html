@@ -4,13 +4,8 @@
 </div>
 
 <div class="content" role="main">
-      <div class='row'>
-            <div class='column' *ngFor='let user of users; let i = index; '>
-                  <mat-card>
-                        <app-user-data [userInfo]=users[i]></app-user-data>
-                  </mat-card>
-            </div>
-      </div>
+            <app-search-filter></app-search-filter>
+      <app-users-list></app-users-list>
 </div>
 
 <!-- Footer -->
