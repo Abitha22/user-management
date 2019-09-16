@@ -8,7 +8,7 @@ import { SearchFilterComponent } from '../search-filter/search-filter.component'
 import { UsersListComponent } from '../users-list/users-list.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { SearchInputComponent } from '../search-input/search-input.component';
-import { FormsModule } from '../../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 describe('ContainerComponent', () => {
   let component: ContainerComponent;
@@ -31,6 +31,16 @@ describe('ContainerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have dropdown and search field to filter the users', () => {
+    const element = fixture.nativeElement.querySelector('app-search-filter');
+    expect(element).toBeTruthy();
+  });
+
+  it('should display all the users information on the card', () => {
+    const element = fixture.nativeElement.querySelector('app-users-list');
+    expect(element).toBeTruthy();
   });
 
 });

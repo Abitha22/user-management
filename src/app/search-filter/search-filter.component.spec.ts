@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 
 import { SearchFilterComponent } from './search-filter.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
-import { FormsModule } from '../../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from '../search-input/search-input.component';
 
 describe('SearchFilterComponent', () => {

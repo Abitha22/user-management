@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { DropdownComponent } from './dropdown.component';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterComponent } from '../search-filter/search-filter.component';
-import { By } from '../../../node_modules/@angular/platform-browser';
+import { By } from '@angular/platform-browser';
 
 describe('DropdownComponent', () => {
   let component: DropdownComponent;

@@ -8,22 +8,22 @@ import { ContainerComponent } from './container/container.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { MatCardModule , MatSelectModule , MatOptionModule , MatFormFieldModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
-import { FormsModule } from '../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './users-list/users-list.component';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     UserDataComponent,
-    UserDetailsComponent,
     SearchInputComponent,
     DropdownComponent,
     SearchFilterComponent,
-    UsersListComponent
+    UsersListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
