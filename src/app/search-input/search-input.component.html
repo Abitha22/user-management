@@ -1,1 +1,2 @@
-<input matInput #searchInput placeholder="search" (keyup)="enterValue(searchInput)">
+<input matInput #searchInput placeholder="search" [(ngModel)]="searchText" (keyup)="enterValue(searchInput)">
+

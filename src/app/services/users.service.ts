@@ -7,6 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UsersService {
   apiUrl = 'http://localhost:3000';
+  searchText;
+  filterType;
   constructor(public http: HttpClient) { }
 
   getUsers(): Observable<any> {
@@ -21,5 +23,19 @@ export class UsersService {
 
     userDetails() {
 
+    }
+
+    setSearchText(searchText) {
+      this.searchText = searchText;
+    }
+    setFilterType(type) {
+      this.filterType = type;
+    }
+
+    getFilterObject() {
+      return {
+        searchText : this.searchText,
+        filterType : this.filterType
+      };
     }
 }

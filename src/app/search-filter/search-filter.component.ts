@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-search-filter',
@@ -13,15 +14,18 @@ list = [
   { value : 'Team'}
 ];
   selectedType = this.list[0].value;
+  constructor(private userservice: UsersService) {
+   }
 
   searchInput(value) {
     console.log('working');
   }
   filterType(type) {
     console.log(type);
+    this.userservice.setFilterType(type);
   }
 
-  constructor() { }
+
 
   ngOnInit() {
   }

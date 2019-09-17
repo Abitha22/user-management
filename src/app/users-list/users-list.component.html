@@ -1,7 +1,7 @@
 <div class='row'>
-    <div class='column' *ngFor='let user of users; let i = index'>
+    <div class='column' *ngFor='let user of users | filter : filterObject : true ; let i = index'>
           <mat-card>
-                <app-user-data [userInfo]=users[i]></app-user-data>
+                <app-user-data [userInfo]=user></app-user-data>
           </mat-card>
     </div>
 </div>
