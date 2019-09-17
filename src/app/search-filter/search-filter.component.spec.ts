@@ -28,19 +28,15 @@ describe('SearchFilterComponent', () => {
   });
   describe('Dropdown Selector', () => {
     it('should have dropdown selector as an element', () => {
-      const element = fixture.debugElement.nativeElement.querySelectorAll('app-dropdown');
+      const element = fixture.debugElement.nativeElement.querySelector('app-dropdown');
       expect(element).toBeTruthy();
     });
-    it('dropdown selector should take input value of type array', () => {
-
-    });
-    it('dropdown selector should emit the value', () => {
-
+    it('searchInput() should call the UserService internally', () => {
     });
   });
   describe('SearchInput Selector', () => {
     it('should have searchinput selector as an element', () => {
-      const element = fixture.debugElement.nativeElement.querySelectorAll('app-search-input');
+      const element = fixture.debugElement.nativeElement.querySelector('app-search-input');
       expect(element).toBeTruthy();
     });
     it('dropdown selector should emit the value', ()  => {

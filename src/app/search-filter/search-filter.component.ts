@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-filter',
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.css']
 })
-export class SearchFilterComponent implements OnInit {
+export class SearchFilterComponent {
+@Output()
+filterObject: object;
 list = [
   { value : 'All'} ,
   { value : 'Name'},
@@ -20,10 +22,4 @@ list = [
   filterType(type) {
     console.log(type);
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
