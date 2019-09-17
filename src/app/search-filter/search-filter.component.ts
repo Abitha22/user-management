@@ -25,8 +25,6 @@ list = [
     this.userservice.setFilterType(type);
   }
 
-
-
   ngOnInit() {
   }
 
