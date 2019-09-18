@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { UsersService } from './users.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
 describe('UsersService', () => {
   let service: UsersService;
   let http: HttpTestingController;
@@ -34,15 +33,13 @@ describe('UsersService', () => {
   it('should have a setFilterType()', () => {
     expect(typeof service.setFilterType).toBe('function');
   });
-  it('should have a setSearchInput()', () => {
-    expect(typeof service.searchText).toBe('function');
+  it('should have a setSearchText()', () => {
+    expect(typeof service.setSearchText).toBe('function');
   });
   it('should have a getFilterObject()', () => {
     expect(typeof service.getFilterObject).toBe('function');
   });
   it('should return type of filterObject', () => {
-    service.setFilterType('abs');
-    service.searchText('b');
     const filterObject = service.getFilterObject();
     expect(filterObject).toEqual(service.filter);
     });

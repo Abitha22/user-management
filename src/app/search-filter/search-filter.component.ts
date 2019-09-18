@@ -21,6 +21,7 @@ list = [
 
   searchInput(value) {
     console.log('working');
+    this.userservice.setFilterType(value);
   }
   filterType(type) {
     console.log(type);
