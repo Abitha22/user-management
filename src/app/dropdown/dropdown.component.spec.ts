@@ -4,6 +4,7 @@ import { DropdownComponent } from './dropdown.component';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterComponent } from '../search-filter/search-filter.component';
 import { By } from '@angular/platform-browser';
+import { HttpClientModule } from '../../../node_modules/@angular/common/http';
 
 describe('DropdownComponent', () => {
   let component: DropdownComponent;
@@ -11,7 +12,7 @@ describe('DropdownComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [FormsModule],
+      imports : [FormsModule , HttpClientModule],
       declarations: [ DropdownComponent ] ,
       providers: [SearchFilterComponent],
 
