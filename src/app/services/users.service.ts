@@ -9,6 +9,8 @@ import { FilterObject } from '../models/filterObject';
 export class UsersService {
   apiUrl = 'http://localhost:3000';
   filter: FilterObject;
+  searchText;
+  filterType;
   constructor(public http: HttpClient) { }
 
   getUsers(): Observable<any> {
@@ -20,16 +22,17 @@ export class UsersService {
     });
     return subject.asObservable();
   }
-  userDetails() {
+  setSearchText(searchText) {
+    this.searchText = searchText;
+  }
+  setFilterType(type) {
+    this.filterType = type;
+  }
 
-  }
-  setFilterType(filterType: string) {
-    this.filter.filterType = filterType;
-  }
-  setSearchInput(searchInput: string) {
-    this.filter.searchInput = searchInput;
-  }
-  getFilterObject(): FilterObject {
-    return this.filter;
+  getFilterObject() {
+    return {
+      searchText: this.searchText,
+      filterType: this.filterType
+    };
   }
 }
