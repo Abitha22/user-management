@@ -6,7 +6,6 @@ import { Component, OnInit , Input , Output , EventEmitter} from '@angular/core'
   styleUrls: ['./dropdown.component.css']
 })
 export class DropdownComponent {
-
   @Input()
   dropdownList;
 

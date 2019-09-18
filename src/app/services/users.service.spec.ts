@@ -31,23 +31,19 @@ describe('UsersService', () => {
     const response = http.expectOne(apiUrl);
     expect(response.request.method).toEqual('GET');
   });
-
-  it('should have a userDetails()', () => {
-    expect(typeof service.userDetails).toBe('function');
-  });
   it('should have a setFilterType()', () => {
     expect(typeof service.setFilterType).toBe('function');
   });
   it('should have a setSearchInput()', () => {
-    expect(typeof service.setSearchInput).toBe('function');
+    expect(typeof service.searchText).toBe('function');
   });
   it('should have a getFilterObject()', () => {
     expect(typeof service.getFilterObject).toBe('function');
   });
   it('should return type of filterObject', () => {
     service.setFilterType('abs');
-    service.setSearchInput('b');
+    service.searchText('b');
     const filterObject = service.getFilterObject();
-    expect(filterObject.searchInput).toEqual(service.filter.searchInput);
+    expect(filterObject).toEqual(service.filter);
     });
 });

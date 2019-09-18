@@ -1,5 +1,5 @@
-    <select [(ngModel)]="selectedType" (click)="onChange($event)">
-        <option   *ngFor="let list of dropdownList" [value]="list.value">
-            {{list.value}}
-        </option>
-    </select>
+<select class="dropdown" [(ngModel)]="selectedType" (click)="onChange($event)">
+  <option *ngFor="let list of dropdownList" [value]="list.value">
+  {{list.value}}
+  </option>
+  </select>

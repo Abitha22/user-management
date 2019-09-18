@@ -23,16 +23,13 @@ export class UsersService {
     return subject.asObservable();
   }
   setSearchText(searchText) {
-    this.searchText = searchText;
+    this.filter.searchInput = searchText;
   }
   setFilterType(type) {
-    this.filterType = type;
+    this.filter.filterType = type;
   }
 
   getFilterObject() {
-    return {
-      searchText: this.searchText,
-      filterType: this.filterType
-    };
+    return this.filter;
   }
 }
