@@ -22,4 +22,7 @@ describe('UserDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should get details based on id' , () => {
+
+  });
 });

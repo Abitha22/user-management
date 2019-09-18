@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchInputComponent } from './search-input.component';
 import { FormsModule } from '../../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../../node_modules/@angular/common/http';
+import { UsersService } from '../services/users.service';
 
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
@@ -11,7 +12,8 @@ describe('SearchInputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchInputComponent ],
-      imports : [FormsModule , HttpClientModule]
+      imports : [FormsModule , HttpClientModule],
+      providers : [ UsersService ]
     })
     .compileComponents();
   }));
@@ -65,12 +67,5 @@ describe('SearchInputComponent', () => {
     input.value = '';
     component.enterValue(input);
     expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
-  });
-  it ('emiting value should match the input value', () => {
-    const input = fixture.nativeElement.querySelector('input');
-    spyOn(component.outSearchEvent, 'emit');
-    input.value = 'testing';
-    component.enterValue(input);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
   });
 });

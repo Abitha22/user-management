@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -6,7 +6,9 @@ import { UsersService } from '../services/users.service';
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.css']
 })
-export class SearchFilterComponent implements OnInit {
+export class SearchFilterComponent {
+@Output()
+filterObject: object;
 list = [
   { value : 'All'} ,
   { value : 'Name'},
@@ -19,13 +21,10 @@ list = [
 
   searchInput(value) {
     console.log('working');
+    this.userservice.setFilterType(value);
   }
   filterType(type) {
     console.log(type);
     this.userservice.setFilterType(type);
   }
-
-  ngOnInit() {
-  }
-
 }

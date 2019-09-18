@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { filter } from '../../../node_modules/@types/minimatch';
 
+
 @Pipe({
   name: 'filter',
   pure: false
