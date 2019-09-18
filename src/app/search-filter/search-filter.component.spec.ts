@@ -4,6 +4,7 @@ import { SearchFilterComponent } from './search-filter.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from '../search-input/search-input.component';
+import { HttpClientModule } from '../../../node_modules/@angular/common/http';
 
 describe('SearchFilterComponent', () => {
   let component: SearchFilterComponent;
@@ -11,7 +12,7 @@ describe('SearchFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [FormsModule],
+      imports : [FormsModule , HttpClientModule],
       declarations: [ SearchFilterComponent , DropdownComponent , SearchInputComponent]
     })
       .compileComponents();

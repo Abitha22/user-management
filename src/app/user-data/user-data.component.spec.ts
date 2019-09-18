@@ -38,7 +38,7 @@ describe('UserDataComponent', () => {
     const element = fixture.nativeElement;
     const user: HTMLInputElement = element.querySelector('.username');
     fixture.detectChanges();
-    expect(user.textContent).toBe(' Name:Testing Testing ');
+    expect(user.textContent).toBe(' Name :Testing Testing ');
   });
   it('should be able to pass designation of the user', () => {
     component.userInfo = {
@@ -53,7 +53,7 @@ describe('UserDataComponent', () => {
     const element = fixture.nativeElement;
     const user: HTMLInputElement = element.querySelector('.designation');
     fixture.detectChanges();
-    expect(user.textContent).toBe(' Designation:Testing ');
+    expect(user.textContent).toBe(' Designation :Testing ');
   });
   it('should be able to pass team of the user', () => {
     component.userInfo = {
@@ -68,6 +68,6 @@ describe('UserDataComponent', () => {
     const element = fixture.nativeElement;
     const user: HTMLInputElement = element.querySelector('.team');
     fixture.detectChanges();
-    expect(user.textContent).toBe(' Team:Testing ');
+    expect(user.textContent).toBe(' Team :Testing ');
   });
 });

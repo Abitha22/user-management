@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchInputComponent } from './search-input.component';
+import { FormsModule } from '../../../node_modules/@angular/forms';
+import { HttpClientModule } from '../../../node_modules/@angular/common/http';
 
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
@@ -8,7 +10,8 @@ describe('SearchInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchInputComponent ]
+      declarations: [ SearchInputComponent ],
+      imports : [FormsModule , HttpClientModule]
     })
     .compileComponents();
   }));
