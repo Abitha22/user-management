@@ -14,6 +14,7 @@ import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './users-list/users-list.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { UserDetailsComponent } from './user-details/user-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     DropdownComponent,
     SearchFilterComponent,
     UsersListComponent,
-    FilterPipe
+    FilterPipe,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

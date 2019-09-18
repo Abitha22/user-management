@@ -1,4 +1,4 @@
-    <mat-card-content class="card"  *ngIf="userInfo">
+    <mat-card-content class="card"  *ngIf="userInfo" (click)="viewDetails(userInfo.id)">
         <img class="profile-image" src="https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png" alt ="" height="100px" width="100px">
         <h2 class="profile-name"></h2>
         <div class="username">

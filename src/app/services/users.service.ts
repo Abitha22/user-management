@@ -21,8 +21,13 @@ export class UsersService {
     return subject.asObservable();
     }
 
-    userDetails() {
-
+    userDetails(id: number) {
+      let user;
+      this.http.get(this.apiUrl + '/users/' + id).subscribe(data => {
+        user = data;
+        console.log(user);
+        return user;
+      });
     }
 
     setSearchText(searchText) {
