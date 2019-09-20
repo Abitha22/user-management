@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './user-data.component.html',
   styleUrls: ['./user-data.component.css']
 })
-export class UserDataComponent implements OnInit {
+export class UserDataComponent {
  user = UserData;
  data: UserDetails;
  @Input()
@@ -17,8 +17,4 @@ export class UserDataComponent implements OnInit {
   viewDetails(id: number) {
     this.router.navigate(['/user/details', id]);
   }
-
-  ngOnInit() {
-  }
-
 }
