@@ -2,25 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FilterObject } from '../models/filterObject';
-
+import {Api} from '../models/userdata';
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  apiUrl = 'http://localhost:3000';
+  apiUrl = Api.apiUrl;
   filter: FilterObject;
   searchText;
   filterType;
   constructor(public http: HttpClient) { }
+   subject = new BehaviorSubject<any>('');
 
   getUsers(): Observable<any> {
     let users;
-    const subject = new BehaviorSubject<any>('');
     this.http.get(this.apiUrl + '/users').subscribe(data => {
       users = data;
-      subject.next(users);
+      this.subject.next(users);
     });
-    return subject.asObservable();
+    return this.subject.asObservable();
   }
   setSearchText(searchText) {
     this.filter.searchInput = searchText;

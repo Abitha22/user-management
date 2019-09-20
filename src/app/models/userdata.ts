@@ -4,3 +4,7 @@ export enum UserData {
     designation = 'Designation',
     team = 'Team'
 }
+
+export enum Api {
+    apiUrl = 'http://localhost:3000'
+}
