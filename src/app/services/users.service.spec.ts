@@ -2,16 +2,19 @@ import { TestBed, fakeAsync } from '@angular/core/testing';
 import { UsersService } from './users.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { of, Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 
 describe('UsersService', () => {
   let service: UsersService;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
+ // let filterpipe: FilterPipe;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      declarations: []
     });
     service = TestBed.get(UsersService);
     httpTestingController = TestBed.get(HttpTestingController);
@@ -41,12 +44,15 @@ describe('UsersService', () => {
       });
   });
   it('should have filterdUsers()', () => {
-    expect(typeof service.filterdUsers).toBe('function');
+    expect(typeof service.usersFilteredList).toBe('function');
   });
-  // it('filterdUsers() should return the Observable' , () => {
-  //   expect(service.filterdUsers()).toEqual(jasmine.any(Observable));
-  // });
-  // it('filterdUsers() accept the FilterObject as an argument' , () => {
-  //   expect(service.filterdUsers({ searchInput: 'abcdef', filterType: 'all' })).toBeTruthy();
-  // });
+  it('filterdUsers() should return the Observable' , () => {
+    expect(service.usersFilteredList()).toEqual(jasmine.any(Observable));
+  });
+  it('filterdUsers() should accept the FilterObject as an argument' , () => {
+    expect(service.usersFilteredList({ searchInput: 'abcdef', filterType: 'all' })).toBeTruthy();
+  });
+  it('filterdUsers() should return the filterd users based on FilterObject' , () => {
+
+  });
 });

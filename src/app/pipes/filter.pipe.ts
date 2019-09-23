@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { FilterObject } from '../models/filterObject';
 
 
 @Pipe({
@@ -7,30 +8,30 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(users: Array<any>, filterObject: {searchText: any , filterType: any }): any[] {
+  transform(users, filterObject: FilterObject): any[] {
     if (!users) {return []; }
-    if (filterObject.searchText === undefined || filterObject.filterType === undefined) {return users; }
-    filterObject.searchText = filterObject.searchText.toString().toLowerCase();
+    if (filterObject.searchInput === undefined || filterObject.filterType === undefined) {return users; }
+    filterObject.searchInput = filterObject.searchInput.toString().toLowerCase();
     filterObject.filterType = filterObject.filterType.toString().toLowerCase();
     console.log(filterObject);
     console.log(filterObject.filterType);
 
     return users.filter( user => {
         if (filterObject.filterType === 'all') {
-          return  user.firstname.toLowerCase().includes(filterObject.searchText) ||
-          user.lastname.toLowerCase().includes(filterObject.searchText) ||
-          user.designation.toLowerCase().includes(filterObject.searchText) ||
-          user.team.toLowerCase().includes(filterObject.searchText);
+          return  user.firstname.toLowerCase().includes(filterObject.searchInput) ||
+          user.lastname.toLowerCase().includes(filterObject.searchInput) ||
+          user.designation.toLowerCase().includes(filterObject.searchInput) ||
+          user.team.toLowerCase().includes(filterObject.searchInput);
         }
         if (filterObject.filterType === 'name') {
-          return user.firstname.toLowerCase().includes(filterObject.searchText) ||
-           user.lastname.toLowerCase().includes(filterObject.searchText);
+          return user.firstname.toLowerCase().includes(filterObject.searchInput) ||
+           user.lastname.toLowerCase().includes(filterObject.searchInput);
         }
         if (filterObject.filterType === 'Designation') {
-          return user.designation.toLowerCase().includes(filterObject.searchText);
+          return user.designation.toLowerCase().includes(filterObject.searchInput);
         }
         if (filterObject.filterType === 'Team') {
-          return user.team.toLowerCase().includes(filterObject.searchText);
+          return user.team.toLowerCase().includes(filterObject.searchInput);
         }
     });
 

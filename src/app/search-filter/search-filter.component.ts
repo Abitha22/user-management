@@ -7,17 +7,16 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./search-filter.component.css']
 })
 export class SearchFilterComponent {
-@Output()
-filterObject: object;
-list = [
-  { value : 'All'} ,
-  { value : 'Name'},
-  { value : 'Designation'},
-  { value : 'Team'}
-];
+  @Output() filterObject: object;
+  list = [
+    { value: 'All' },
+    { value: 'Name' },
+    { value: 'Designation' },
+    { value: 'Team' }
+  ];
   selectedType = this.list[0].value;
   constructor(private userservice: UsersService) {
-   }
+  }
 
   searchInput(value) {
     console.log('working');
@@ -25,6 +24,6 @@ list = [
   }
   filterType(type) {
     console.log(type);
-   //  this.userservice.setFilterType(type);
+    //  this.userservice.setFilterType(type);
   }
 }

@@ -16,7 +16,8 @@ export class UsersService {
   usersInfo = new BehaviorSubject<any>('');
   filterdUsersList = new BehaviorSubject<any>('');
   subscribeToUsersData = this.usersInfo.asObservable();
-  constructor(public http: HttpClient) {
+  subscribeToFilteredUsersList = this.filterdUsersList.asObservable();
+  constructor(public http: HttpClient, public filterPipe: FilterPipe) {
     this.http.get(this.apiUrl + '/users').subscribe(data => {
       this.usersInfo.next(data);
     });
@@ -25,11 +26,12 @@ export class UsersService {
   get users() {
     return this.usersInfo.asObservable();
   }
-  filterdUsers(filterObject?: FilterObject): Observable<any> {
-    let usersList;
+  usersFilteredList(filterObject?: FilterObject): Observable<any> {
+    let filteredUsers;
     this.http.get(this.apiUrl + '/users').subscribe(data => {
-      usersList = data;
+     filteredUsers = this.filterPipe.transform(data , filterObject);
+     this.filterdUsersList.next(filteredUsers);
     });
-    return usersList;
+    return this.filterdUsersList.asObservable();
   }
 }
