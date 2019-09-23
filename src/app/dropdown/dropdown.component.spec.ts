@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchFilterComponent } from '../search-filter/search-filter.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule } from '../../../node_modules/@angular/common/http';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 describe('DropdownComponent', () => {
   let component: DropdownComponent;
@@ -14,7 +15,7 @@ describe('DropdownComponent', () => {
     TestBed.configureTestingModule({
       imports : [FormsModule , HttpClientModule],
       declarations: [ DropdownComponent ] ,
-      providers: [SearchFilterComponent],
+      providers: [SearchFilterComponent , FilterPipe],
 
     })
     .compileComponents();
@@ -49,7 +50,7 @@ describe('DropdownComponent', () => {
   it('select event should trigger when user selects the filter type', () => {
     const element = fixture.nativeElement.querySelector('select');
     spyOn(component, 'onChange');
-    element.dispatchEvent(new Event('click'));
+    element.dispatchEvent(new Event('change'));
     fixture.detectChanges();
     expect(component.onChange).toHaveBeenCalled();
   });
@@ -60,7 +61,7 @@ describe('DropdownComponent', () => {
       spyOn(component.outSelectedType, 'emit');
       const select = fixture.nativeElement.querySelector('select');
       select.value = select.options[1].value;
-      select.dispatchEvent(new Event('click'));
+      select.dispatchEvent(new Event('change'));
       fixture.detectChanges();
       expect(component.outSelectedType.emit).toHaveBeenCalled();
       expect(component.outSelectedType.emit).toHaveBeenCalledWith('Name');

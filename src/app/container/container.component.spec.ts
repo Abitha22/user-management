@@ -9,6 +9,7 @@ import { UsersListComponent } from '../users-list/users-list.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { SearchInputComponent } from '../search-input/search-input.component';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 describe('ContainerComponent', () => {
   let component: ContainerComponent;
@@ -17,8 +18,9 @@ describe('ContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ContainerComponent , SearchFilterComponent , UsersListComponent ,
-         DropdownComponent , SearchInputComponent , UserDataComponent],
-      imports : [MaterialModule , HttpClientTestingModule , FormsModule]
+         DropdownComponent , SearchInputComponent , UserDataComponent ],
+      imports : [MaterialModule , HttpClientTestingModule , FormsModule],
+      providers : [FilterPipe]
     })
     .compileComponents();
   }));

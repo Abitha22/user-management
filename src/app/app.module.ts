@@ -38,7 +38,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     MatFormFieldModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

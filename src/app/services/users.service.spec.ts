@@ -2,7 +2,6 @@ import { TestBed, fakeAsync } from '@angular/core/testing';
 import { UsersService } from './users.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { Observable } from 'rxjs';
 import { FilterPipe } from '../pipes/filter.pipe';
 
 
@@ -14,6 +13,7 @@ describe('UsersService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers : [FilterPipe],
       declarations: []
     });
     service = TestBed.get(UsersService);
@@ -42,17 +42,5 @@ describe('UsersService', () => {
         console.log(data);
         expect(data).toEqual(testData);
       });
-  });
-  it('should have filterdUsers()', () => {
-    expect(typeof service.usersFilteredList).toBe('function');
-  });
-  it('filterdUsers() should return the Observable' , () => {
-    expect(service.usersFilteredList()).toEqual(jasmine.any(Observable));
-  });
-  it('filterdUsers() should accept the FilterObject as an argument' , () => {
-    expect(service.usersFilteredList({ searchInput: 'abcdef', filterType: 'all' })).toBeTruthy();
-  });
-  it('filterdUsers() should return the filterd users based on FilterObject' , () => {
-
   });
 });

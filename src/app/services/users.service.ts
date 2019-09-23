@@ -13,6 +13,7 @@ export class UsersService {
   filterObject: FilterObject;
   searchText;
   filterType;
+  currentFilteredObject = new BehaviorSubject<FilterObject>({searchInput: 'All', filterType: ''});
   usersInfo = new BehaviorSubject<any>('');
   filterdUsersList = new BehaviorSubject<any>('');
   subscribeToUsersData = this.usersInfo.asObservable();
@@ -26,12 +27,15 @@ export class UsersService {
   get users() {
     return this.usersInfo.asObservable();
   }
-  usersFilteredList(filterObject?: FilterObject): Observable<any> {
-    let filteredUsers;
-    this.http.get(this.apiUrl + '/users').subscribe(data => {
-     filteredUsers = this.filterPipe.transform(data , filterObject);
-     this.filterdUsersList.next(filteredUsers);
-    });
-    return this.filterdUsersList.asObservable();
+
+  setFilteredObject(filterObject) {
+    this.currentFilteredObject.next(filterObject);
   }
+
+  filteredUsers(filterObject: FilterObject) {
+    this.http.get(this.apiUrl + '/users/type:'  + filterObject.filterType + ' & input = ' + filterObject.searchInput).subscribe(data => {
+      this.usersInfo.next(data);
+    });
+  }
+
 }

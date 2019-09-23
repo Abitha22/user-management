@@ -10,6 +10,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -29,6 +30,7 @@ describe('AppComponent', () => {
         SearchInputComponent ,
         UsersListComponent
       ],
+      providers : [FilterPipe]
     }).compileComponents();
   }));
 
