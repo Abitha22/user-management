@@ -9,7 +9,7 @@ import { UsersService } from '../services/users.service';
 export class ContainerComponent  {
   users;
   constructor(private userservice: UsersService) {
-  this.userservice.getUsers()
+  this.userservice.usersInfo
     .subscribe(users => {
       this.users = users;
     });

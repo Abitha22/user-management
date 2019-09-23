@@ -21,10 +21,10 @@ list = [
 
   searchInput(value) {
     console.log('working');
-    this.userservice.setFilterType(value);
+    // .userservice.setFilterType(value);
   }
   filterType(type) {
     console.log(type);
-    this.userservice.setFilterType(type);
+   //  this.userservice.setFilterType(type);
   }
 }
