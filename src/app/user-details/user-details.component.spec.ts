@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';
-import { UsersService } from 'Internal/user-profile-management/src/app/users.service';
-import { MaterialModule } from '../modules/material.module';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '../modules/material.module';
+import { UsersService } from '../services/users.service';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;

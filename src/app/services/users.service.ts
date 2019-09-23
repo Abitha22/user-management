@@ -2,43 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FilterObject } from '../models/filterObject';
-
+import { Api } from '../models/userdata';
+import { FilterPipe } from '../pipes/filter.pipe';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
-  apiUrl = 'http://localhost:3000';
-  filter: FilterObject;
+  apiUrl = Api.apiUrl;
+  filterObject: FilterObject;
   searchText;
   filterType;
-  constructor(public http: HttpClient) { }
-
-  getUsers(): Observable<any> {
-    let users;
-    const subject = new BehaviorSubject<any>('');
+  usersInfo = new BehaviorSubject<any>('');
+  filterdUsersList = new BehaviorSubject<any>('');
+  subscribeToUsersData = this.usersInfo.asObservable();
+  constructor(public http: HttpClient) {
     this.http.get(this.apiUrl + '/users').subscribe(data => {
-      users = data;
-      subject.next(users);
+      this.usersInfo.next(data);
     });
-    return subject.asObservable();
-  }
-  setSearchText(searchText) {
-    this.filter.searchInput = searchText;
-  }
-  setFilterType(type) {
-    this.filter.filterType = type;
   }
 
-    userDetails(id: number) {
-      let user;
-      this.http.get(this.apiUrl + '/users/' + id).subscribe(data => {
-        user = data;
-        console.log(user);
-        return user;
-      });
-    }
-
-  getFilterObject() {
-    return this.filter;
+  get users() {
+    return this.usersInfo.asObservable();
+  }
+  filterdUsers(filterObject?: FilterObject): Observable<any> {
+    let usersList;
+    this.http.get(this.apiUrl + '/users').subscribe(data => {
+      usersList = data;
+    });
+    return usersList;
   }
 }
