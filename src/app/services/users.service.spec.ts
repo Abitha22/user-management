@@ -1,24 +1,18 @@
-import { TestBed, fakeAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { UsersService } from './users.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { FilterPipe } from '../pipes/filter.pipe';
 
 
 describe('UsersService', () => {
   let service: UsersService;
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
- // let filterpipe: FilterPipe;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers : [FilterPipe],
       declarations: []
     });
     service = TestBed.get(UsersService);
     httpTestingController = TestBed.get(HttpTestingController);
-    httpClient = TestBed.get(HttpClient);
   });
 
   it('should be created', () => {
@@ -33,14 +27,61 @@ describe('UsersService', () => {
       designation: 'Testing',
       team: 'Testing'
     }];
-    const req = httpTestingController.expectOne('http://localhost:3000/users');
+    const req =  httpTestingController.expectOne(
+      // tslint:disable-next-line:no-shadowed-variable
+      request => request.params.get('filter') === 'all');
     expect(req.request.method).toEqual('GET');
+    console.log('url ' , req.request.url);
     req.flush(testData);
     httpTestingController.verify();
-    httpClient.get('http://localhost:3000/users')
-      .subscribe(data => {
-        console.log(data);
-        expect(data).toEqual(testData);
-      });
+    service.usersInfo.subscribe(data => {
+      expect(data).toEqual(testData);
+    });
+  });
+  it('should get filtered users based on the filterObject', () => {
+    const testData = [{
+      userphotourl: '',
+      id: 1,
+      firstname: 'Testing',
+      lastname: 'Testing',
+      designation: 'Testing',
+      team: 'Testing'
+    }];
+    const filterObject = { searchInput: '', filterType: 'name' };
+    service.setFilteredObject(filterObject);
+    const req =  httpTestingController.expectOne(
+      // tslint:disable-next-line:no-shadowed-variable
+      request => request.params.get('filter') === 'name'
+    );
+    console.log(req.request.urlWithParams);
+    expect(req.request.method).toEqual('GET');
+    expect(req.request.params.has('searchInput')).toEqual(false);
+    req.flush(testData);
+    service.usersInfo.subscribe(data => {
+      expect(data).toEqual(testData);
+    });
+  });
+  it('should get filtered users based on the filterObject', () => {
+    const testData = [{
+      userphotourl: '',
+      id: 1,
+      firstname: 'Testing',
+      lastname: 'Testing',
+      designation: 'Testing',
+      team: 'Testing'
+    }];
+    const filterObject = { searchInput: 'testing', filterType: 'team' };
+    service.setFilteredObject(filterObject);
+    const req =  httpTestingController.expectOne(
+      // tslint:disable-next-line:no-shadowed-variable
+      request => request.params.get('filter') === 'team'
+    );
+    console.log(req.request.urlWithParams);
+    expect(req.request.method).toEqual('GET');
+    expect(req.request.params.has('searchInput')).toEqual(true);
+    req.flush(testData);
+    service.usersInfo.subscribe(data => {
+      expect(data).toEqual(testData);
+    });
   });
 });

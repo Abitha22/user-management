@@ -1,41 +1,53 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FilterObject } from '../models/filterObject';
-import { Api } from '../models/userdata';
-import { FilterPipe } from '../pipes/filter.pipe';
+import { UserDetails } from '../models/userdetails';
+import { environment } from '../../environments/environment.dev';
 @Injectable({
   providedIn: 'root'
 })
 
 export class UsersService {
-  apiUrl = Api.apiUrl;
-  filterObject: FilterObject;
-  searchText;
-  filterType;
-  currentFilteredObject = new BehaviorSubject<FilterObject>({searchInput: 'All', filterType: ''});
-  usersInfo = new BehaviorSubject<any>('');
-  filterdUsersList = new BehaviorSubject<any>('');
-  subscribeToUsersData = this.usersInfo.asObservable();
-  subscribeToFilteredUsersList = this.filterdUsersList.asObservable();
-  constructor(public http: HttpClient, public filterPipe: FilterPipe) {
-    this.http.get(this.apiUrl + '/users').subscribe(data => {
-      this.usersInfo.next(data);
+  apiUrl = environment.apiUrl;
+  url;
+  currentFilterObservable = new BehaviorSubject<FilterObject>({ searchInput: '', filterType: 'all' });
+  usersInfo = new BehaviorSubject<Array<UserDetails>>(null);
+  constructor(public http: HttpClient) {
+    this.currentFilterObservable.subscribe((filterObject: FilterObject) => {
+      this.getUsers(filterObject);
     });
   }
 
-  get users() {
+  get users(): Observable<Array<UserDetails>> {
     return this.usersInfo.asObservable();
   }
 
-  setFilteredObject(filterObject) {
-    this.currentFilteredObject.next(filterObject);
+  setFilteredObject(filterObject?: FilterObject): void {
+    this.currentFilterObservable.next(filterObject);
   }
 
-  filteredUsers(filterObject: FilterObject) {
-    this.http.get(this.apiUrl + '/users/type:'  + filterObject.filterType + ' & input = ' + filterObject.searchInput).subscribe(data => {
-      this.usersInfo.next(data);
-    });
-  }
+  getUsers(filterObject: FilterObject = {} as FilterObject): void {
 
+    const url = this.apiUrl + '/users';
+    let params = new HttpParams();
+
+    const {filterType, searchInput} = filterObject;
+    if (filterType) {
+      params = params.set('filter', filterType);
+    }
+
+    if (searchInput) {
+      params = params.set('searchInput', searchInput);
+    }
+
+    if (filterType && searchInput) {
+      params = params.set('filter', filterType);
+      params = params.set('searchInput', searchInput);
+    }
+    this.http.get(
+    url , {params} ).subscribe((data: UserDetails[]) => {
+        this.usersInfo.next(data);
+      });
+    }
 }

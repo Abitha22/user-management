@@ -5,7 +5,7 @@ import {MaterialModule} from '../modules/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
-
+/*
 describe('UserDataComponent', () => {
   let component: UserDataComponent;
   let fixture: ComponentFixture<UserDataComponent>;
@@ -91,3 +91,4 @@ describe('UserDataComponent', () => {
 //     expect(router.navigate).toHaveBeenCalled();
 // });
 });
+*/
