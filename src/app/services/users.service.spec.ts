@@ -38,7 +38,7 @@ describe('UsersService', () => {
       expect(data).toEqual(testData);
     });
   });
-  it('should get filtered users based on the filterObject', () => {
+  it('should get userInfo based on the filteredObject', () => {
     const testData = [{
       userphotourl: '',
       id: 1,

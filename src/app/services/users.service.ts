@@ -40,11 +40,6 @@ export class UsersService {
     if (searchInput) {
       params = params.set('searchInput', searchInput);
     }
-
-    if (filterType && searchInput) {
-      params = params.set('filter', filterType);
-      params = params.set('searchInput', searchInput);
-    }
     this.http.get(
     url , {params} ).subscribe((data: UserDetails[]) => {
         this.usersInfo.next(data);
