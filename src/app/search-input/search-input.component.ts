@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, DoCheck } from '@angular/core';
+import { Component, EventEmitter, OnChanges, DoCheck, Output } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UsersService } from '../services/users.service';
 })
 export class SearchInputComponent {
   regex = new RegExp('^[a-zA-Z0-9_]*$');
+  @Output()
   outSearchEvent = new EventEmitter<string>();
   enterValue(input: HTMLInputElement) {
     if (this.regex.test(input.value)) {
@@ -19,8 +20,4 @@ export class SearchInputComponent {
       }
     }
   }
-  // ngDoCheck() {
-  //   console.log('data is', this.searchText);
-  //   this.userservice.setSearchText(this.searchText);
-  // }
 }

@@ -29,7 +29,6 @@ export class SearchFilterComponent {
   }
 
   searchInput(value): Observable<string> {
-    console.log(value, 'working');
     this.input = value;
     return value;
   }

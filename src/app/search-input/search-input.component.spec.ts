@@ -12,11 +12,11 @@ describe('SearchInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchInputComponent ],
-      imports : [FormsModule , HttpClientModule],
-      providers : [ UsersService ]
+      declarations: [SearchInputComponent],
+      imports: [FormsModule, HttpClientModule],
+      providers: [UsersService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,37 +33,48 @@ describe('SearchInputComponent', () => {
     expect(element).toBeTruthy();
   });
   it('should accept input numbers', fakeAsync(() => {
-    const input = fixture.nativeElement.querySelector('input');
-    fixture.detectChanges();
-    input.value = '1234567';
     spyOn(component.outSearchEvent, 'emit');
-    tick(2500);
+    const input = fixture.nativeElement.querySelector('input');
+    input.dispatchEvent(new Event('keyup'));
+    input.value = '1234567';
     component.enterValue(input);
+    fixture.detectChanges();
+    tick(2500);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
     expect(component.outSearchEvent.emit).toHaveBeenCalledWith('1234567');
   }));
-  it('should accept input alphabets', () => {
-
-    const input = fixture.nativeElement.querySelector('input');
-    input.value = 'abcdefgh';
+  it('should accept input alphabets', fakeAsync(() => {
     spyOn(component.outSearchEvent, 'emit');
-    component.enterValue(input);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('abcdefgh');
-  });
-  it('should not accept the special symbols', () => {
-
     const input = fixture.nativeElement.querySelector('input');
-    input.value = '@%4q123';
-    spyOn(component.outSearchEvent, 'emit');
-    component.enterValue(input);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
-  });
-  it('should emit the input value', () => {
-    const input = fixture.nativeElement.querySelector('input');
-    spyOn(component.outSearchEvent, 'emit');
+    input.dispatchEvent(new Event('keyup'));
     input.value = 'testing';
     component.enterValue(input);
+    fixture.detectChanges();
+    tick(2500);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
     expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
-  });
+  }));
+  it('should not accept the special symbols', fakeAsync(() => {
+    spyOn(component.outSearchEvent, 'emit');
+    const input = fixture.nativeElement.querySelector('input');
+    input.dispatchEvent(new Event('keyup'));
+    input.value = '@testing';
+    component.enterValue(input);
+    fixture.detectChanges();
+    tick(2500);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
+  }));
+  it('should emit the input value', fakeAsync(() => {
+    spyOn(component.outSearchEvent, 'emit');
+    const input = fixture.nativeElement.querySelector('input');
+    input.dispatchEvent(new Event('keyup'));
+    input.value = 'testing';
+    component.enterValue(input);
+    fixture.detectChanges();
+    tick(2500);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
+  }));
   it('should not emit the empty value', () => {
     const input = fixture.nativeElement.querySelector('input');
     spyOn(component.outSearchEvent, 'emit');
