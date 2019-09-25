@@ -38,7 +38,7 @@ describe('UsersService', () => {
       expect(data).toEqual(testData);
     });
   });
-  it('should get userInfo based on the filteredObject', () => {
+  it('should get filtered users based on filterType', () => {
     const testData = [{
       userphotourl: '',
       id: 1,
@@ -61,7 +61,7 @@ describe('UsersService', () => {
       expect(data).toEqual(testData);
     });
   });
-  it('should get filtered users based on the filterObject', () => {
+  it('should get filtered users based on both searchInput and filterType as `all`', () => {
     const testData = [{
       userphotourl: '',
       id: 1,
@@ -70,11 +70,35 @@ describe('UsersService', () => {
       designation: 'Testing',
       team: 'Testing'
     }];
-    const filterObject = { searchInput: 'testing', filterType: 'team' };
+    const filterObject = { searchInput: 'testing', filterType: 'all' };
+    service.setFilteredObject(filterObject);
+    const req =  httpTestingController.match(
+      // tslint:disable-next-line:no-shadowed-variable
+      request => request.params.get('filter') === 'all'
+    );
+    console.log(req[1].request.urlWithParams);
+    expect(req[1].request.method).toEqual('GET');
+    expect(req[1].request.params.has('searchInput')).toEqual(true);
+    req[1].flush(testData);
+    service.usersInfo.subscribe(data => {
+      expect(data).toEqual(testData);
+    });
+  });
+
+  it('should get filtered users based on both searchInput and filterType', () => {
+    const testData = [{
+      userphotourl: '',
+      id: 1,
+      firstname: 'Testing',
+      lastname: 'Testing',
+      designation: 'Testing',
+      team: 'Testing'
+    }];
+    const filterObject = { searchInput: 'testing', filterType: 'name' };
     service.setFilteredObject(filterObject);
     const req =  httpTestingController.expectOne(
       // tslint:disable-next-line:no-shadowed-variable
-      request => request.params.get('filter') === 'team'
+      request => request.params.get('filter') === 'name'
     );
     console.log(req.request.urlWithParams);
     expect(req.request.method).toEqual('GET');

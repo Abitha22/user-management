@@ -5,7 +5,7 @@ import { FormsModule } from '../../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../../node_modules/@angular/common/http';
 import { UsersService } from '../services/users.service';
 
-/*
+
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
   let fixture: ComponentFixture<SearchInputComponent>;
@@ -34,10 +34,10 @@ describe('SearchInputComponent', () => {
   });
   it('should accept input numbers', fakeAsync(() => {
     const input = fixture.nativeElement.querySelector('input');
-    tick(2500);
     fixture.detectChanges();
     input.value = '1234567';
     spyOn(component.outSearchEvent, 'emit');
+    tick(2500);
     component.enterValue(input);
     expect(component.outSearchEvent.emit).toHaveBeenCalledWith('1234567');
   }));
@@ -71,4 +71,4 @@ describe('SearchInputComponent', () => {
     component.enterValue(input);
     expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
   });
-});*/
+});
