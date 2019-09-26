@@ -5,6 +5,7 @@ export enum UserData {
     team = 'Team'
 }
 
-export enum Api {
-    apiUrl = 'http://localhost:3000'
+export enum Filter {
+    searchInput = '',
+    filterType = 'all'
 }

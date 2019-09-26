@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { FilterObject } from '../models/filterObject';
 import { UserDetails } from '../models/userdetails';
 import { environment } from '../../environments/environment.dev';
+import { Filter } from '../models/userdata';
 @Injectable({
   providedIn: 'root'
 })

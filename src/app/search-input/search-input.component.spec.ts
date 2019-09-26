@@ -3,8 +3,6 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { SearchInputComponent } from './search-input.component';
 import { FormsModule } from '../../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../../node_modules/@angular/common/http';
-import { UsersService } from '../services/users.service';
-
 
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
@@ -13,9 +11,8 @@ describe('SearchInputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchInputComponent],
-      imports: [FormsModule, HttpClientModule],
-      providers: [UsersService]
-    })
+      imports: [FormsModule, HttpClientModule]
+        })
       .compileComponents();
   }));
 
@@ -39,7 +36,7 @@ describe('SearchInputComponent', () => {
     input.value = '1234567';
     component.enterValue(input);
     fixture.detectChanges();
-    tick(2500);
+    tick(2000);
     expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
     expect(component.outSearchEvent.emit).toHaveBeenCalledWith('1234567');
   }));
