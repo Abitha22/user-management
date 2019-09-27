@@ -27,15 +27,8 @@ describe('SearchInputComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should have input field', () => {
-    const element = fixture.debugElement.nativeElement.querySelectorAll('input');
+    const element = fixture.debugElement.nativeElement.querySelector('input');
     expect(element).toBeTruthy();
-  });
-  it('should emit the last value', () => {
-    spyOn(component, 'enterValue');
-    of('a', 'ab', 'abcfgh').pipe(debounceTime(200)).subscribe(inputValue => {
-      component.enterValue(inputValue);
-    });
-    expect(component.enterValue).toHaveBeenCalledWith('abcfgh');
   });
   it('should call the enterValue() based on the debounceTime', fakeAsync(() => {
     spyOn(component.outSearchEvent, 'emit');
