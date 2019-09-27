@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
-
 import { SearchInputComponent } from './search-input.component';
 import { FormsModule } from '../../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../../node_modules/@angular/common/http';
+import { of } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
@@ -12,7 +13,7 @@ describe('SearchInputComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SearchInputComponent],
       imports: [FormsModule, HttpClientModule]
-        })
+    })
       .compileComponents();
   }));
 
@@ -29,54 +30,36 @@ describe('SearchInputComponent', () => {
     const element = fixture.debugElement.nativeElement.querySelectorAll('input');
     expect(element).toBeTruthy();
   });
-  it('should accept input numbers', fakeAsync(() => {
+  it('should emit the last value', () => {
+    spyOn(component, 'enterValue');
+    of('a', 'ab', 'abcfgh').pipe(debounceTime(200)).subscribe(inputValue => {
+      component.enterValue(inputValue);
+    });
+    expect(component.enterValue).toHaveBeenCalledWith('abcfgh');
+  });
+  it('should call the enterValue() based on the debounceTime', fakeAsync(() => {
     spyOn(component.outSearchEvent, 'emit');
-    const input = fixture.nativeElement.querySelector('input');
-    input.dispatchEvent(new Event('keyup'));
-    input.value = '1234567';
-    component.enterValue(input);
-    fixture.detectChanges();
+    spyOn(component, 'enterValue');
+    const element = fixture.nativeElement.querySelector('input');
+    for (let i = 1; i <= 4; i++) {
+      element.value = 'test' + i;
+      element.dispatchEvent(new Event('keyup'));
+      fixture.detectChanges();
+     }
+    tick(2000);
+    expect(component.enterValue).toHaveBeenCalledTimes(1);
+  }));
+  it('should emit latest value entered', fakeAsync(() => {
+    spyOn(component, 'enterValue').and.callThrough();
+    spyOn(component.outSearchEvent, 'emit');
+    const element = fixture.nativeElement.querySelector('input');
+    for (let i = 1; i <= 4; i++) {
+      element.value = 'test' + i;
+      element.dispatchEvent(new Event('keyup'));
+      fixture.detectChanges();
+     }
     tick(2000);
     expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('1234567');
+    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('test4');
   }));
-  it('should accept input alphabets', fakeAsync(() => {
-    spyOn(component.outSearchEvent, 'emit');
-    const input = fixture.nativeElement.querySelector('input');
-    input.dispatchEvent(new Event('keyup'));
-    input.value = 'testing';
-    component.enterValue(input);
-    fixture.detectChanges();
-    tick(2500);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
-  }));
-  it('should not accept the special symbols', fakeAsync(() => {
-    spyOn(component.outSearchEvent, 'emit');
-    const input = fixture.nativeElement.querySelector('input');
-    input.dispatchEvent(new Event('keyup'));
-    input.value = '@testing';
-    component.enterValue(input);
-    fixture.detectChanges();
-    tick(2500);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
-  }));
-  it('should emit the input value', fakeAsync(() => {
-    spyOn(component.outSearchEvent, 'emit');
-    const input = fixture.nativeElement.querySelector('input');
-    input.dispatchEvent(new Event('keyup'));
-    input.value = 'testing';
-    component.enterValue(input);
-    fixture.detectChanges();
-    tick(2500);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('testing');
-  }));
-  it('should not emit the empty value', () => {
-    const input = fixture.nativeElement.querySelector('input');
-    spyOn(component.outSearchEvent, 'emit');
-    input.value = '';
-    component.enterValue(input);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(0);
-  });
 });

@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Output, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { of, interval, Observable } from '../../../node_modules/rxjs';
-import { debounce, map, debounceTime } from '../../../node_modules/rxjs/operators';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { map, debounceTime } from '../../../node_modules/rxjs/operators';
 import { fromEvent } from 'rxjs';
 
 
@@ -11,15 +10,12 @@ import { fromEvent } from 'rxjs';
 })
 export class SearchInputComponent implements OnInit {
   regex = new RegExp('^[a-zA-Z0-9]*$');
-
   @Output()
   outSearchEvent = new EventEmitter<string>();
-  enterValue(inputValue: string) {
-    // input.value = input.value.trim();
+  enterValue(inputValue: string): void {
     if (this.regex.test(inputValue)) {
       this.outSearchEvent.emit(inputValue);
-      console.log(inputValue);
-     }
+    }
   }
   ngOnInit() {
     const searchInput = document.querySelector('.searchbox');
@@ -27,8 +23,7 @@ export class SearchInputComponent implements OnInit {
       .pipe(
         map((i: any) => i.currentTarget.value),
         debounceTime(2000)
-      )
-      .subscribe(searchValue => {
+      ).subscribe(searchValue => {
         this.enterValue(searchValue);
       });
   }
