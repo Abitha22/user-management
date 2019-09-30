@@ -25,6 +25,7 @@ export class UsersService {
   }
 
   setFilteredObject(filterObject?: FilterObject): void {
+    console.log(filterObject);
     this.currentFilterObservable.next(filterObject);
   }
 

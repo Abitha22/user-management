@@ -20,7 +20,7 @@ describe('UsersService', () => {
   });
   it('should get the users data when service is initialised', () => {
     const testData = [{
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -40,7 +40,7 @@ describe('UsersService', () => {
   });
   it('should get filtered users based on filterType', () => {
     const testData = [{
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -63,7 +63,7 @@ describe('UsersService', () => {
   });
   it('should get filtered users based on both searchInput and filterType as `all`', () => {
     const testData = [{
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -87,7 +87,7 @@ describe('UsersService', () => {
 
   it('should get filtered users based on both searchInput and filterType', () => {
     const testData = [{
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',

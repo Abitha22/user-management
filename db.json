@@ -1,7 +1,7 @@
 {
   "users" : [
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 1,
           "firstname": "Anees",
           "lastname": "Zyed",
@@ -9,7 +9,7 @@
           "team": "UI/UX"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 2,
           "firstname": "Rama",
           "lastname": "Krishna",
@@ -17,7 +17,7 @@
           "team": "AWS/Cloud"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 3,
           "firstname": "Prabhakaran",
           "lastname": "S",
@@ -25,7 +25,7 @@
           "team": "WSO2"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 4,
           "firstname": "Veer",
           "lastname": "Singh",
@@ -33,7 +33,7 @@
           "team": "Testing"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 5,
           "firstname": "Tejas",
           "lastname": "CH",
@@ -41,7 +41,7 @@
           "team": "WSO2"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 6,
           "firstname": "Nikitha",
           "lastname": "CH",
@@ -49,7 +49,7 @@
           "team": "WSO2"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 7,
           "firstname": "Abitha",
           "lastname": "M",
@@ -57,7 +57,7 @@
           "team": "Angular"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 8,
           "firstname": "Yeshwanth",
           "lastname": "G",
@@ -65,7 +65,7 @@
           "team": "Angular"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 9,
           "firstname": "Aditya",
           "lastname": "A",
@@ -73,7 +73,7 @@
           "team": "Angular"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 10,
           "firstname": "Ramya",
           "lastname": "P",
@@ -81,7 +81,7 @@
           "team": "WSO2"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 11,
           "firstname": "Vivek",
           "lastname": "C",
@@ -89,7 +89,7 @@
           "team": "WSO2"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 12,
           "firstname": "Ashrith",
           "lastname": "Y",
@@ -97,7 +97,7 @@
           "team": "Testing"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 13,
           "firstname": "Akhil",
           "lastname": "A",
@@ -105,7 +105,7 @@
           "team": "AWS"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 14,
           "firstname": "Supriya",
           "lastname": "P",
@@ -113,7 +113,7 @@
           "team": "RPA"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 15,
           "firstname": "Pratyusha",
           "lastname": "S",
@@ -121,7 +121,7 @@
           "team": "RPA"
       },
       {
-          "userphotourl": "",
+          "photourl": "",
           "id": 16,
           "firstname": "Nisar",
           "lastname": "S",

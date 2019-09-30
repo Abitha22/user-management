@@ -13,4 +13,8 @@ export class ContainerComponent  {
       this.users = users;
     });
    }
+   filterObject(filterObject) {
+    console.log(filterObject);
+    this.userservice.setFilteredObject({ searchInput: filterObject[0], filterType: filterObject[1] });
+   }
 }

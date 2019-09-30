@@ -1,7 +1,7 @@
 {
   "users":[
     {
-      "userphotourl": "",
+      "photourl": "",
 "id": 0,
 "firstname": "Anees",
 "lastname": "Zyed",
@@ -9,7 +9,7 @@
 "team": ""
 },
 {
-"userphotourl": "",
+"photourl": "",
 "id": 1,
 "firstname": "Veer",
 "lastname": "singh",
@@ -17,7 +17,7 @@
 "team": "UI/UX"
 },
 {
-"userphotourl": "",
+"photourl": "",
 "id": 2,
 "firstname": "Rama",
 "lastname": "Krishna",
@@ -25,7 +25,7 @@
 "team": "AWS/Cloud"
 },
 {
-"userphotourl": "",
+"photourl": "",
 "id": 3,
 "firstname": "Prabhakaran",
 "lastname": "S",

@@ -1,8 +1,8 @@
 import { UserDetails } from '../models/userdetails';
 
-export  const users : Array<UserDetails> = [
+export  const users: Array<UserDetails> = [
      {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 0,
         firstname: 'Shirisha',
         lastname: 'B',
@@ -10,7 +10,7 @@ export  const users : Array<UserDetails> = [
         team: ''
     },
     {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 1,
         firstname: 'Anees',
         lastname: 'zyed',
@@ -18,7 +18,7 @@ export  const users : Array<UserDetails> = [
         team: 'Ui/Ux'
     },
     {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 2,
         firstname: 'Rama',
         lastname: 'Krishna',
@@ -26,7 +26,7 @@ export  const users : Array<UserDetails> = [
         team: 'Aws/cloud'
     },
      {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 3,
         firstname: 'Prabhakaran',
         lastname: 's',
@@ -34,7 +34,7 @@ export  const users : Array<UserDetails> = [
         team: 'WSO2'
     },
      {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 4,
         firstname: 'Veer',
         lastname: 'singh',
@@ -42,7 +42,7 @@ export  const users : Array<UserDetails> = [
         team: 'Testing'
     },
      {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 5,
         firstname: 'Tejas',
         lastname: 'CH',
@@ -50,7 +50,7 @@ export  const users : Array<UserDetails> = [
         team: 'WSO2'
     },
      {
-        userphotourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
+        photourl : 'https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png',
         id: 6,
         firstname: 'Nikitha',
         lastname: 'CH',

@@ -1,6 +1,5 @@
-import { Component, Output } from '@angular/core';
-import { Observable, combineLatest } from '../../../node_modules/rxjs';
-import { map } from 'rxjs/operators';
+import { Component, Output, EventEmitter } from '@angular/core';
+import {  combineLatest, BehaviorSubject } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-search-filter',
@@ -8,33 +7,28 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./search-filter.component.css']
 })
 export class SearchFilterComponent {
-  @Output() filterObject: Observable<any>;
-  input: string;
-  type: string;
+  @Output() outFilterObject = new EventEmitter();
+  filterObject;
   list = [
     { value: 'All' },
     { value: 'Name' },
     { value: 'Designation' },
     { value: 'Team' }
   ];
+  selectedFilterType = new BehaviorSubject<any>('All');
+  searchValue = new BehaviorSubject<any>('');
   selectedType = this.list[0].value;
   constructor() {
-    this.filterObject = combineLatest(this.searchInput(this.input), this.filterType(this.type)).pipe(
-      map(([input, type]) => {
-        console.log('values are', input, type);
-        return { input, type };
-      })
-    );
-    console.log(this.filterObject);
+    this.filterObject = combineLatest(this.searchValue, this.selectedFilterType).subscribe((data) => {
+      this.outFilterObject.emit(data);
+      console.log(data);
+    });
   }
 
-  searchInput(value): Observable<string> {
-    this.input = value;
-    return value;
+  searchInput(value) {
+    this.searchValue.next(value);
   }
-  filterType(type): Observable<string> {
-    console.log(type);
-    this.type = type;
-    return type;
+  filterType(type) {
+   this.selectedFilterType.next(type);
   }
 }

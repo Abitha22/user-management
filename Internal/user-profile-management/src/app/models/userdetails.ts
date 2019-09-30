@@ -1,5 +1,5 @@
 export class UserDetails {
-    userphotourl : string;
+    photourl: string;
     id: number;
     firstname: string;
     lastname: string;

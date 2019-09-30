@@ -31,7 +31,7 @@ describe('UserDataComponent', () => {
 
   it('should be able to pass name of the user', () => {
     component.userInfo = {
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -46,7 +46,7 @@ describe('UserDataComponent', () => {
   });
   it('should be able to pass designation of the user', () => {
     component.userInfo = {
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -61,7 +61,7 @@ describe('UserDataComponent', () => {
   });
   it('should be able to pass team of the user', () => {
     component.userInfo = {
-      userphotourl: '',
+      photourl: '',
       id: 1,
       firstname: 'Testing',
       lastname: 'Testing',
@@ -76,7 +76,7 @@ describe('UserDataComponent', () => {
   });
 //   it('Should navigate User-Datails Page While click on the User-Info', () => {
 //     component.userInfo = {
-//       userphotourl: '',
+//       photourl: '',
 //       id: 1,
 //       firstname: 'Testing',
 //       lastname: 'Testing',

@@ -1,5 +1,5 @@
 export enum UserData {
-    userphotourl = '',
+    photourl = '',
     name = 'Name',
     designation = 'Designation',
     team = 'Team'
