@@ -12,7 +12,7 @@ import { Filter } from '../models/userdata';
 export class UsersService {
   apiUrl = environment.apiUrl;
   url;
-  currentFilterObservable = new BehaviorSubject<FilterObject>({ searchInput: '', filterType: 'all' });
+  currentFilterObservable = new BehaviorSubject<FilterObject>({ searchInput: Filter.searchInput, filterType: Filter.filterType });
   usersInfo = new BehaviorSubject<Array<UserDetails>>(null);
   constructor(public http: HttpClient) {
     this.currentFilterObservable.subscribe((filterObject: FilterObject) => {

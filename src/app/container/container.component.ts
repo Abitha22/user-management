@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { FilterPipe } from '../pipes/filter.pipe';
-
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',

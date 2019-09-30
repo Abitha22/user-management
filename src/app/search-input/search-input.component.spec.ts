@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { SearchInputComponent } from './search-input.component';
 import { FormsModule } from '../../../node_modules/@angular/forms';
-import { HttpClientModule } from '../../../node_modules/@angular/common/http';
-import { of } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { HttpClientModule } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
+import { last } from '../../../node_modules/rxjs/operators';
 
 describe('SearchInputComponent', () => {
   let component: SearchInputComponent;
@@ -34,11 +34,17 @@ describe('SearchInputComponent', () => {
     spyOn(component.outSearchEvent, 'emit');
     spyOn(component, 'enterValue');
     const element = fixture.nativeElement.querySelector('input');
-    for (let i = 1; i <= 4; i++) {
-      element.value = 'test' + i;
-      element.dispatchEvent(new Event('keyup'));
-      fixture.detectChanges();
-     }
+    const observable = new Observable(subscriber => {
+      subscriber.next('a');
+      subscriber.next('ab');
+      subscriber.next('abc');
+    });
+
+    observable.subscribe((data) => {
+        element.value = data;
+        element.dispatchEvent(new Event('keyup'));
+        fixture.detectChanges();
+    });
     tick(2000);
     expect(component.enterValue).toHaveBeenCalledTimes(1);
   }));
@@ -46,13 +52,22 @@ describe('SearchInputComponent', () => {
     spyOn(component, 'enterValue').and.callThrough();
     spyOn(component.outSearchEvent, 'emit');
     const element = fixture.nativeElement.querySelector('input');
-    for (let i = 1; i <= 4; i++) {
-      element.value = 'test' + i;
-      element.dispatchEvent(new Event('keyup'));
-      fixture.detectChanges();
-     }
+
+    const observable = new Observable(subscriber => {
+      subscriber.next('a');
+      subscriber.next('ab');
+      subscriber.next('abc');
+    });
+
+    observable.subscribe((data) => {
+        element.value = data;
+        element.dispatchEvent(new Event('keyup'));
+        fixture.detectChanges();
+    });
     tick(2000);
     expect(component.outSearchEvent.emit).toHaveBeenCalledTimes(1);
-    expect(component.outSearchEvent.emit).toHaveBeenCalledWith('test4');
+    observable.pipe(last()).subscribe(value => {
+      expect(component.outSearchEvent.emit).toHaveBeenCalledWith(value);
+    });
   }));
 });
