@@ -108,4 +108,22 @@ describe('UsersService', () => {
       expect(data).toEqual(testData);
     });
   });
+  // it('should get user based on the ID', () => {
+  //   const testData = [{
+  //     photourl: '',
+  //     id: 1,
+  //     firstname: 'Testing',
+  //     lastname: 'Testing',
+  //     designation: 'Testing',
+  //     team: 'Testing'
+  //   }];
+  //   service.userDetails(1);
+  //   const req =  httpTestingController.expectOne('http://localhost:3000/users/id/1');
+  //   console.log(req.request.urlWithParams);
+  //   expect(req.request.method).toEqual('GET');
+  //   req.flush(testData);
+  //   service.userInfo.subscribe(data => {
+  //     expect(data).toEqual(testData);
+  //   });
+  // });
 });

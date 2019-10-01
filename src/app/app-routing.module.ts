@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { ContainerComponent } from './container/container.component';
+import { UserinfoComponent } from './UserInfo/userinfo/userinfo.component';
 
 
 const routes: Routes = [{path : '' , component: ContainerComponent},
-  {path: 'user/details/:id', component : UserDetailsComponent}];
+  {path: 'user/details/:id', component : UserinfoComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

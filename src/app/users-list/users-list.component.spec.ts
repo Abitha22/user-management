@@ -40,8 +40,7 @@ describe('UsersListComponent', () => {
       lastname: 'Testing',
       designation: 'Testing',
       team: 'Testing'
-    }
-    ];
+    }];
     fixture.detectChanges();
     const details: HTMLDivElement = fixture.nativeElement;
     const userInfo = details.querySelectorAll('.column');

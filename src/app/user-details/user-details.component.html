@@ -1,25 +1,32 @@
-<mat-card-content class="card" >
-  <img class="profile-image" src="https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png" alt ="" height="100px" width="100px">
-  <h2 class="profile-name"></h2>
-  <div class="id">
-    <label>
-        <b>Employee Id :</b>
-    </label>
-</div><br>
-  <div class="username">
-      <label>
-          <b> Name :</b>
-      </label>
-  </div><br>
-  <div class="designation">
-      <label>
-          <b>Designation :</b>
-      </label>
-  </div><br>
-  <div class="team">
-      <label>
-          <b>Team :</b>
-      </label>
-  </div>
-</mat-card-content>
-
+<mat-card class="card" *ngIf = "userDetails">
+    <mat-card-header>
+      <mat-card-title>Employee</mat-card-title>
+      <mat-card-subtitle>Details</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-image src="https://i217.photobucket.com/albums/cc312/mastersig/Avitars/For%20Me/C_D_A.png" >
+    <mat-card-content>
+            <div class="id">
+                    <label>
+                        {{userDetails.id}}
+                    </label>
+                </div>
+            <div class="name">
+                    <label>
+                        {{userDetails.firstname}} {{userDetails.lastname}}
+                    </label>
+                </div><br>
+                <div class="designation">
+                    <label>
+                        {{userDetails.designation}}
+                    </label>
+                </div><br>
+                <div class="team">
+                    <label>
+                        {{userDetails.team}}
+                    </label>
+                </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Edit</button>
+    </mat-card-actions>
+  </mat-card>

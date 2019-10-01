@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './users-list/users-list.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserinfoComponent } from './UserInfo/userinfo/userinfo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     SearchFilterComponent,
     UsersListComponent,
     FilterPipe,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,

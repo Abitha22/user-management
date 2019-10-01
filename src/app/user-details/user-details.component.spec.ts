@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '../modules/material.module';
 import { UsersService } from '../services/users.service';
-/*
+
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
   let fixture: ComponentFixture<UserDetailsComponent>;
@@ -29,7 +29,32 @@ describe('UserDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should get details based on id' , () => {
-
+  it('should take userDetails as an Input', () => {
+    component.userDetails = {
+      photourl: '',
+      id: 1,
+      firstname: 'Privus',
+      lastname: 'Technologies',
+      designation: 'Corporate',
+      team: 'Software'
+    };
+    fixture.detectChanges();
+    const details: HTMLDivElement = fixture.nativeElement;
+    const userInfo = details.querySelector('.card');
+    expect(userInfo).toBeTruthy();
   });
-});*/
+  it('should display all the `UserDetails` propertices', () => {
+    component.userDetails = {
+      photourl: '',
+      id: 1,
+      firstname: 'Privus',
+      lastname: 'Technologies',
+      designation: 'Corporate',
+      team: 'Software'
+    };
+    fixture.detectChanges();
+    const details: HTMLDivElement = fixture.nativeElement;
+    const userInfo = details.querySelector('.name');
+    expect(userInfo.textContent).toBe(' Privus Technologies ');
+  });
+});

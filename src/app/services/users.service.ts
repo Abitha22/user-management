@@ -12,6 +12,7 @@ import { Filter } from '../models/userdata';
 export class UsersService {
   apiUrl = environment.apiUrl;
   url;
+  userInfo = new BehaviorSubject<UserDetails>(null);
   currentFilterObservable = new BehaviorSubject<FilterObject>({ searchInput: Filter.searchInput, filterType: Filter.filterType });
   usersInfo = new BehaviorSubject<Array<UserDetails>>(null);
   constructor(public http: HttpClient) {
@@ -34,7 +35,7 @@ export class UsersService {
     const url = this.apiUrl + '/users';
     let params = new HttpParams();
 
-    const {filterType, searchInput} = filterObject;
+    const { filterType, searchInput } = filterObject;
     if (filterType) {
       params = params.set('filter', filterType);
     }
@@ -43,8 +44,16 @@ export class UsersService {
       params = params.set('searchInput', searchInput);
     }
     this.http.get(
-    url , {params} ).subscribe((data: UserDetails[]) => {
+      url, { params }).subscribe((data: UserDetails[]) => {
         this.usersInfo.next(data);
       });
-    }
+  }
+  get UserDetails() {
+    return this.userInfo.asObservable();
+  }
+  getId(id): void {
+    this.http.get(this.apiUrl + '/users/' + id).subscribe((data: UserDetails) => {
+     this.userInfo.next(data);
+    });
+  }
 }
